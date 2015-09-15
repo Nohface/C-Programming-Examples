@@ -1,1 +1,4 @@
-//Commit to the cloud
+int main()
+{
+	return 0;
+}
