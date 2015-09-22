@@ -16,13 +16,19 @@ int main()
 	printf("Please enter a number and an operator: ");
 	scanf("%i%c", &number, &letter);
 
+	
+	
 	switch (letter)
 	{
+	case 'S':;
+	case 'N':;
 	case '+':;
 	case '-':;
 	case '*':;
 	case '/':;
 	}
 	
+
+
 	return 0;
 }
