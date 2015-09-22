@@ -6,8 +6,9 @@ int main()
 	int center = diamondSize / 2;
 	int spaces = center;
 	int os = 1;
+	int lineNumber = 1;
 
-	while (spaces >= 1)
+	while (spaces <= diamondSize)
 	{
 		for (int x = 1; x <= spaces; x++)
 		{
@@ -18,13 +19,26 @@ int main()
 		{
 			printf("o");
 		}
+
+		if (lineNumber <= center)
+		{
+			spaces--;
+			os += 2;
+		}
 		
-		spaces--;
-		os += 2;
+		else
+		{
+			spaces++;
+			os -= 2;
+		}
+		
+
+		
+		lineNumber++;
 		printf("\n");
 	}
 	
-	while (spaces <= center)
+	/*while (spaces <= center)
 	{
 		for (int x = 1; x <= spaces; x++)
 		{
@@ -39,7 +53,7 @@ int main()
 		spaces++;
 		os -= 2;
 		printf("\n");
-	}
+	}*/
 	
 
 
