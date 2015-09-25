@@ -1,6 +1,7 @@
 //define error cancellation and include necessary libraries
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
+#include <stdbool.h>
 
 //include main function
 int main()
@@ -9,6 +10,7 @@ int main()
 	float number;
 	float total = 0;
 	char letter;
+	bool printTotal = true;
 
 	//print welcome statement and instructions
 	printf("Hello. This is a simple 'console' calculator.\n");
@@ -22,6 +24,8 @@ int main()
 	//do function while N is not typed
 	do
 	{
+		printTotal = true;
+
 		//ask for variable
 		printf("Please enter a number and an operator: ");
 		scanf("%f%c", &number, &letter);
@@ -37,6 +41,7 @@ int main()
 			//recognizes if the use types '0N'
 			if (number == 0)
 			{
+				printTotal = false;
 				break;
 			}
 		case '+':
@@ -56,6 +61,7 @@ int main()
 			if (number == 0)
 			{
 				printf("Cannot divide by zero.\n");
+				printTotal = false;
 				break;
 			}
 			else
@@ -65,11 +71,12 @@ int main()
 			break;
 		default: 
 			//have a default error text if you type an unrecognized letter
+			printTotal = false;
 			printf("Error. Please ensure you enter a correct number and operator.\n");
 		}
 		
 		//print the total only if the user has not typed N or tried to divide by 0
-		if ((letter != 'N' )&&(letter != '/' && number != 0))
+		if (printTotal) 
 		{
 			printf("%f\n", total);
 		}
