@@ -1,8 +1,11 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
+#include <stdlib.h>
+
 int main()
 {
-	int number;
+	float number;
+	float secondNumber = 0;
 	char letter;
 
 	printf("Hello. This is a simple 'console' calculator.\n");
@@ -12,21 +15,42 @@ int main()
 	printf("2) N, that ends the calculation (N.B. Must place a zero before N).\n");
 	printf("\n");
 	
-	
 	printf("Please enter a number and an operator: ");
-	scanf("%i%c", &number, &letter);
-
+	scanf("%d%c", &number, &letter);
 	
-	
-	switch (letter)
+	do
 	{
-	case 'S':;
-	case 'N':;
-	case '+':;
-	case '-':;
-	case '*':;
-	case '/':;
-	}
+		printf("%i\n", number);
+
+		printf("Please enter a number and an operator: ");
+		scanf("%d%c", &secondNumber, &letter);
+		
+		switch (letter)
+		{
+		case 'S':;
+		case 'N':
+			if (number == 0)
+			{
+				exit;
+			}
+		case '+':
+			(number = number + secondNumber);
+			break;
+		case '-':
+			(number = number - secondNumber);
+			break;
+		case '*':
+			(number = number * secondNumber);
+			break;
+		case '/':
+			(number = number / secondNumber);
+			break;
+		default: 
+			printf("Error. Please ensure you enter a correct number and operator.");
+		}
+		
+	}while (letter != 'N');
+	
 	
 
 
