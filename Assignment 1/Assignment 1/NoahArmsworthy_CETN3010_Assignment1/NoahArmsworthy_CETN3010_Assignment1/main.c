@@ -5,7 +5,7 @@
 int main()
 {
 	float number;
-	float secondNumber = 0;
+	float total = 0;
 	char letter;
 
 	printf("Hello. This is a simple 'console' calculator.\n");
@@ -15,38 +15,37 @@ int main()
 	printf("2) N, that ends the calculation (N.B. Must place a zero before N).\n");
 	printf("\n");
 	
-	printf("Please enter a number and an operator: ");
-	scanf("%d%c", &number, &letter);
+	
 	
 	do
 	{
-		printf("%i\n", number);
-
 		printf("Please enter a number and an operator: ");
-		scanf("%d%c", &secondNumber, &letter);
+		scanf("%f%c", &number, &letter);
+		printf("%f\n", total);
 		
 		switch (letter)
 		{
-		case 'S':;
+		case 'S':
+			(total = number);
 		case 'N':
 			if (number == 0)
 			{
-				exit;
+				break;
 			}
 		case '+':
-			(number = number + secondNumber);
+			( total = total + number);
 			break;
 		case '-':
-			(number = number - secondNumber);
+			(total = total - number);
 			break;
 		case '*':
-			(number = number * secondNumber);
+			(total = total * number);
 			break;
 		case '/':
-			(number = number / secondNumber);
+			(total = total / number);
 			break;
 		default: 
-			printf("Error. Please ensure you enter a correct number and operator.");
+			printf("Error. Please ensure you enter a correct number and operator.\n");
 		}
 		
 	}while (letter != 'N');
