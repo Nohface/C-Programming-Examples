@@ -13,6 +13,7 @@ int main()
 	bool loopCon = true;
 	//and arrays to store strings
 	char resultString[50];
+	char addString[20];
 	char searchString[50];
 	char myString[50]= "Let us have some fun with strings!\0";
 
@@ -80,11 +81,11 @@ int main()
 			break;
 		case '4':
 			printf("\nEnter the word you'd like to insert:");
-			scanf(" %[^\n]s", searchString);
+			scanf(" %[^\n]s", addString);
 			printf("Enter the starting point of insertion:");
 			scanf(" %i", &start);
 
-			insertString(myString, searchString, start);
+			insertString(myString, addString, start);
 			puts(myString);
 			break;
 		case 'x':

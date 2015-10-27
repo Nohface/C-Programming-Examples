@@ -114,14 +114,32 @@ void removeString(char source[], int startingIndex, int count)
 		j++;
 		i++;
 	}
-		
-
-	
 
 }
 
 
 void insertString(char source[], char stringToInsert[], int insertPosition)
 {
+	int i = 0;
+	int j = 0;
+	int len = strlen(source);
+	int len2 = strlen(stringToInsert);
 
+
+	for (i = 0; source[i] != '\0'; i++)
+	{
+		if (i >= insertPosition)
+			source[i + len2 ] = source[i];
+	}
+
+	for (i = 0; stringToInsert[i] != '\0'; i++)
+	{
+		if (i >= insertPosition)
+			if (len2 != 0)
+				source[i] = stringToInsert[j];
+				j++;
+				len2--;
+
+
+	}
 }
