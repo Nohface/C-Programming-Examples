@@ -18,6 +18,7 @@ int main()
 	char myString[50]= "Let us have some fun with strings!\0";
 
 	//print string
+	printf("The string you will be working with is:\n");
 	printf("%s", myString);
 	printf("\n");;
 	
@@ -32,6 +33,7 @@ int main()
 		printf("2 - Find the location of a word in the string\n");
 		printf("3 - Remove characters from the string\n");
 		printf("4 - Insert a word into the string\n");
+		printf("5 - Reset the string\n");
 		printf("x - Exit the program\n");
 
 
@@ -52,7 +54,9 @@ int main()
 
 			//put those numbers in function and return the resulting substring
 			subString(myString, start, length, resultString);
+			printf("\n");
 			puts(resultString);
+			printf("\n");
 			break;
 
 		case '2':
@@ -74,10 +78,11 @@ int main()
 			scanf(" %i", &length);
 			printf("\n");
 
-			/*removeString(myString, resultString, start, length);
-			puts(myString);*/
+			//call the remove string function, print it with some line breaks
 			removeString(myString, start, length);
+			printf("\n");
 			puts(myString);
+			printf("\n");
 			break;
 		case '4':
 			printf("\nEnter the word you'd like to insert:");
@@ -85,9 +90,16 @@ int main()
 			printf("Enter the starting point of insertion:");
 			scanf(" %i", &start);
 
+			//call the insert string function, print it with some line breaks
 			insertString(myString, addString, start);
+			printf("\n");
 			puts(myString);
+			printf("\n");
 			break;
+		case '5':
+			//reset the string
+			myString[50] = "Let us have some fun with strings!\0";
+			puts(myString);
 		case 'x':
 			//end the loop, print thank you text
 			loopCon = false;
