@@ -15,6 +15,7 @@ int main()
 	char resultString[50];
 	char addString[20];
 	char searchString[50];
+	char reverseThisString[50];
 	char myString[50]= "Let us have some fun with strings!\0";
 
 	//print string
@@ -33,7 +34,8 @@ int main()
 		printf("2 - Find the location of a word in the string\n");
 		printf("3 - Remove characters from the string\n");
 		printf("4 - Insert a word into the string\n");
-		printf("5 - Reset the string\n");
+		printf("5 - Reverse a word in the string\n");
+		printf("6 - Reset the string\n");
 		printf("x - Exit the program\n");
 
 
@@ -97,9 +99,16 @@ int main()
 			printf("\n");
 			break;
 		case '5':
+			printf("\nEnter the word you'd like to reverse:");
+			scanf(" %[^\n]s", reverseThisString);
+			reverseString(reverseThisString, myString);
+			puts(myString);
+			break;
+		case '6':
 			//reset the string
 			myString[50] = "Let us have some fun with strings!\0";
 			puts(myString);
+			break;
 		case 'x':
 			//end the loop, print thank you text
 			loopCon = false;

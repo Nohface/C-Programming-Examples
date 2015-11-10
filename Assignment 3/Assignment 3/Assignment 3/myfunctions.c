@@ -1,7 +1,7 @@
 void subString(char source[], char start, int count, char result[])
 {
 	//set the position variable knowing that strings start at 0
-	int position = start - 1;
+	int position = start;
 	int j = 0;
 	int i = 0;
 
@@ -24,7 +24,7 @@ int findString(char source[], char stringToFind[])
 	//set variables, including length of strings
 	int i = 0;
 	int j = 0;
-	int index = 0;
+	int index = -1;
 	int len = strlen(source);
 	int len2 = strlen(stringToFind);
 
@@ -38,7 +38,7 @@ int findString(char source[], char stringToFind[])
 			len2--;
 			if (len2 == 0)
 			{
-				index = i - strlen(stringToFind) + 2;
+				index = i - strlen(stringToFind) + 1;
 			}
 		}
 
@@ -139,5 +139,23 @@ void insertString(char source[], char stringToInsert[], int insertPosition)
 	{
 		source[insertPosition] = stringToInsert[i];
 		insertPosition++;
+	}
+}
+
+void reverseString(char stringToReverse[], char result[])
+{
+	int i = 0;
+	int j = 0;
+	int len = strlen(stringToReverse) - 1;
+	
+
+	for (i = 0; len >= 0; i++)
+	{
+		if (stringToReverse[i] != '\0')
+
+			result[len] = stringToReverse[i];
+			len--;
+			if (len == 0)
+				result[strlen(stringToReverse) + 1] = '\0';
 	}
 }
