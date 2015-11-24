@@ -1,3 +1,9 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+#include "myfunctions.h"
+
+
+
 int main()
 {
 	int gameScores[10] = { 12, 5, 21, 15, 32, 10 };
