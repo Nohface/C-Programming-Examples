@@ -1,0 +1,1 @@
+float getAveragePoints(int totalPoints, int numberOfGames);
