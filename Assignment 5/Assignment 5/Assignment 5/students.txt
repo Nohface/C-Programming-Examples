@@ -1,0 +1,24 @@
+John
+Doe
+1995
+4
+25
+123 Main St.
+Halifax
+95
+Donny
+Smith
+1998
+7
+28
+345 Happy St.
+Dartmouth
+80
+Shelly
+Jones
+1980
+9
+23
+789 Slippery Blvd.
+Sackville
+79
