@@ -46,12 +46,14 @@
 		scanf(" %c", &choice);
 
 
-		//user imput to identify required allocated memory
+		//option for manual entry or file entry
 		if (choice == '1')
 		{
+			//prompt user for how many students
 			printf("How many students would you like to enter?: ");
 			scanf(" %i", &numberOfStudents);
 
+			//reallocate the memory based on how many students
 			gradeBook = realloc(gradeBook, sizeof(struct student)*numberOfStudents);
 
 			//for the amount of students required, ask and scan for details to fill struct
@@ -196,23 +198,28 @@
 					scanf(" %f", &(gradeBook + numberOfStudents - 1)->grade);
 					break;
 				case '7':
+					//prompt user for the file path to new file
 					GETNEWPATH:
 					printf("Please enter the name of the path file: ");
 					char filePath[100];
 					scanf(" %s", filePath);
 
+					//open the requested file path
 					FILE * pRecords = fopen(filePath, "w");
 
+					//error if file path is a no-go
 					if (pRecords == NULL)
 					{
 						printf("Error. File path is invalid. \n\n");
 						goto GETNEWPATH;
 					}
 
+					//print the records of all the students into the new file, based on the number of students
 					for (i = 0; i < numberOfStudents; i++)
 					{
 						fprintf(pRecords, "%s\n", ((gradeBook + i)->firstName));
 						fprintf(pRecords, "%s\n", ((gradeBook + i)->lastName));
+						printf("\nSaved %s %s's information to requested file.\n", (gradeBook + i)->firstName, (gradeBook + i)->lastName);
 						fprintf(pRecords, "%i\n", ((gradeBook + i)->date.birthDay));
 						fprintf(pRecords, "%i\n", ((gradeBook + i)->date.birthMonth));
 						fprintf(pRecords, "%i\n", ((gradeBook + i)->date.birthYear));
@@ -222,6 +229,7 @@
 
 					}
 					
+					//close file
 					fclose(pRecords);
 					
 					break;
@@ -236,16 +244,16 @@
 		else if (choice == '2')
 		{
 
+			//variables
 			int studentsInFile = 0;
-			
-
 			char filePath[100];
 			
+			//get file path of the file to load
 			GETPATH:
 			printf("\nWhat is the file path of the file you wish to load? ");
 			scanf(" %s", &filePath);
 		
-
+			//identify all the buffers and open the file
 			int iBuff = 0;
 			float fBuff = 0;
 			char buff[100];
@@ -253,37 +261,46 @@
 			int countLines = 0;
 			int i;
 
-
+			//error message is filepath is invalid
 			if (pFile == NULL)
 			{
 				printf("Error. File path is invalid. \n\n");
 				goto GETPATH;
 			}
 			
+			//count the lines to the end of the file
 			while ((i = fgetc(pFile)) != EOF)
 			{
 				if (i == '\n')
 					countLines++;
 			}
-				
+			
+			//close the file
 			fclose(pFile);
+			//find out how many students based on the line count
 			studentsInFile = countLines / 8;
+
+			//reallocate memory
 			gradeBook = realloc(gradeBook, sizeof(struct student)*(studentsInFile));
 				
-				
+			//open the file	
 			pFile = fopen(filePath, "r");
 
+			//get string value and store in the buffer of each line and add to gradeBook
+			//add a null terminator after string values
 			for (int i = 0; i < studentsInFile; i++)
 			{
 				fgets(buff, 100, pFile);
 				buff[strlen(buff) - 1] = '\0';
+				printf("\nAdded %s to your Grade book!\n", buff);
 				strcpy((gradeBook + i)->firstName, buff);
 					
 				fgets(buff, 100, pFile);
 				buff[strlen(buff) - 1] = '\0';
 				strcpy((gradeBook + i)->lastName, buff);
-					
+				
 				fgets(buff, 100, pFile);
+				//convert integer value to be stored in int Buffer
 				iBuff = atoi(buff);
 				(gradeBook + i)->date.birthYear = iBuff;
 					
@@ -302,7 +319,8 @@
 				fgets(buff, 100, pFile);
 				buff[strlen(buff) - 1] = '\0';
 				strcpy((gradeBook + i)->addressDetails.city, buff);
-					
+				
+
 				fgets(buff, 100, pFile);
 				fBuff = atof(buff);
 				(gradeBook + i)->grade = fBuff;
@@ -310,8 +328,13 @@
 			
 			}
 
+			//close the file
 			fclose(pFile);
+
+			//add the number of students from file to the base number 
 			numberOfStudents += studentsInFile;
+
+			//send user back to the options tag
 			goto OPTIONS;
 			
 		}
