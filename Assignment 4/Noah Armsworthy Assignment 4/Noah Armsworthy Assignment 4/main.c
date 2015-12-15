@@ -1,7 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <string.h>
-//#include "myfunctions.h"
+
 
 //identify struct, with embedded struct for clarification
 struct student{
@@ -187,7 +187,7 @@ int main()
 		}
 	} while (command != 'q');
 
-
+	free(gradeBook);
 
 	return 0;
 }
